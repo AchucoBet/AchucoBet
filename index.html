@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ACHUCOBET | Pronósticos</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#101a33;
+      --muted:#9fb0d0;
+      --text:#eef3ff;
+      --line:rgba(255,255,255,.12);
+      --accent:#f5c400;
+      --wa:#25d366;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1100px;margin:0 auto;padding:18px}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:12px 0 4px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{
+      height:56px;width:auto;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
+    }
+    .brandTitle{display:flex;flex-direction:column}
+    .brandTitle b{font-size:18px;letter-spacing:.5px}
+    .brandTitle span{color:var(--muted);font-size:13px;margin-top:-2px}
+    .pill{
+      padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);color:var(--muted);font-weight:700;font-size:12px
+    }
+    .card{
+      background:rgba(16,26,51,.80);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      padding:14px;
+      margin:14px 0;
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+    }
+    h2{margin:0 0 10px;font-size:18px}
+    .note{color:var(--muted);font-size:13px;margin:8px 0 0}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    th{color:var(--muted);font-size:12px}
+    .opts{display:flex;gap:10px;flex-wrap:wrap}
+    label{
+      display:inline-flex;gap:8px;align-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      padding:8px 10px;border-radius:999px;cursor:pointer;
+      user-select:none;
+    }
+    input[type="radio"]{transform:scale(1.05)}
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .big{font-size:34px;font-weight:900;letter-spacing:.4px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.08);color:var(--text);text-decoration:none;font-weight:800;cursor:pointer
+    }
+    .btn:hover{background:rgba(255,255,255,.12)}
+    .btnWA{
+      border-color: rgba(37,211,102,.35);
+      background: rgba(37,211,102,.18);
+    }
+    .btnWA:hover{background: rgba(37,211,102,.26)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:900px){
+      .grid2{grid-template-columns:1fr}
+      .brand img{height:48px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <!-- Logo: guarda tu imagen como "logo.png" en la misma carpeta -->
+        <img src="logo.png" alt="ACHUCOBET logo">
+        <div class="brandTitle">
+          <b>ACHUCOBET</b>
+          <span>Pronósticos del barrio (entretenimiento)</span>
+        </div>
+      </div>
+      <div class="pill">+18 • Juego responsable</div>
+    </div>
+
+    <div class="card">
+      <div class="note">
+        Aquí puedes marcar resultados tipo quiniela. Se calcula un <b>puntaje</b> (producto de factores) redondeado a 2 decimales.
+      </div>
+    </div>
+
+    <!-- 1) PRONÓSTICOS (5 PARTIDOS) -->
+    <div class="card">
+      <h2>PRONÓSTICOS (5 partidos)</h2>
+      <table id="tablaPartidos">
+        <thead>
+          <tr>
+            <th>Partido</th>
+            <th>Elige 1 opción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- PARTIDO 1 -->
+          <tr data-match="PARTIDO 1" data-desc="INTRATABLES vs SANTA ELVIRA">
+            <td><b>PARTIDO 1</b><div class="note">INTRATABLES vs SANTA ELVIRA</div></td>
+            <td>
+              <div class="opts">
+                <label><input type="radio" name="m1" value="1.55"> L 1.55</label>
+                <label><input type="radio" name="m1" value="1.50"> E 1.50</label>
+                <label><input type="radio" name="m1" value="1.45"> V 1.45</label>
+              </div>
+            </td>
+          </tr>
+
+          <!-- PARTIDO 2 -->
+          <tr data-match="PARTIDO 2" data-desc="OLIVAR vs POTRILLOS">
+            <td><b>PARTIDO 2</b><div class="note">OLIVAR vs POTRILLOS</div></td>
+            <td>
+              <div class="opts">
+                <label><input type="radio" name="m2" value="2.10"> L 2.10</label>
+                <label><input type="radio" name="m2" value="1.45"> E 1.45</label>
+                <label><input type="radio" name="m2" value="1.25"> V 1.25</label>
+              </div>
+            </td>
+          </tr>
+
+          <!-- PARTIDO 3 -->
+          <tr data-match="PARTIDO 3" data-desc="MAQUINA vs ENGREÍDOS">
+            <td><b>PARTIDO 3</b><div class="note">MAQUINA vs ENGREÍDOS</div></td>
+            <td>
+              <div class="opts">
+                <label><input type="radio" name="m3" value="1.35"> L 1.35</label>
+                <label><input type="radio" name="m3" value="1.50"> E 1.50</label>
+                <label><input type="radio" name="m3" value="1.65"> V 1.65</label>
+              </div>
+            </td>
+          </tr>
+
+          <!-- PARTIDO 4 -->
+          <tr data-match="PARTIDO 4" data-desc="ENGREÍDITOS vs MILAGROS">
+            <td><b>PARTIDO 4</b><div class="note">ENGREÍDITOS vs MILAGROS</div></td>
+            <td>
+              <div class="opts">
+                <label><input type="radio" name="m4" value="1.60"> L 1.60</label>
+                <label><input type="radio" name="m4" value="1.55"> E 1.55</label>
+                <label><input type="radio" name="m4" value="1.35"> V 1.35</label>
+              </div>
+            </td>
+          </tr>
+
+          <!-- PARTIDO 5 -->
+          <tr data-match="PARTIDO 5" data-desc="ELECTRIC vs VERBENAS">
+            <td><b>PARTIDO 5</b><div class="note">ELECTRIC vs VERBENAS</div></td>
+            <td>
+              <div class="opts">
+                <label><input type="radio" name="m5" value="2.00"> L 2.00</label>
+                <label><input type="radio" name="m5" value="1.30"> E 1.30</label>
+                <label><input type="radio" name="m5" value="1.20"> V 1.20</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">Cada partido solo permite 1 selección (L/E/V).</div>
+    </div>
+
+    <!-- 2) LEVANTA CUOTA (opcional, solo 1 selección total en toda la matriz) -->
+    <div class="card">
+      <h2>LEVANTA CUOTA (opcional)</h2>
+      <div class="note">Aquí solo puedes elegir <b>1</b> opción en toda la matriz.</div>
+
+      <table id="tablaLevanta">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Posición</th>
+            <th>Jugador</th>
+            <th>Equipo</th>
+            <th>1 Gol</th>
+            <th>2 Goles</th>
+            <th>3 Goles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- A -->
+          <tr>
+            <td>A</td><td>1</td><td>JHON ARRIETA</td><td>JESÚS DE LOS MILAGROS FC</td>
+            <td><label><input type="radio" name="boost" value="1.05" data-pick="JHON ARRIETA - 1 GOL (1.05)">1.05</label></td>
+            <td><label><input type="radio" name="boost" value="1.20" data-pick="JHON ARRIETA - 2 GOLES (1.20)">1.20</label></td>
+            <td><label><input type="radio" name="boost" value="1.45" data-pick="JHON ARRIETA - 3 GOLES (1.45)">1.45</label></td>
+          </tr>
+
+          <!-- B -->
+          <tr>
+            <td>B</td><td>2</td><td>ALDAIR CARDEÑA</td><td>LOS INTRATABLES</td>
+            <td><label><input type="radio" name="boost" value="1.05" data-pick="ALDAIR CARDEÑA - 1 GOL (1.05)">1.05</label></td>
+            <td><label><input type="radio" name="boost" value="1.20" data-pick="ALDAIR CARDEÑA - 2 GOLES (1.20)">1.20</label></td>
+            <td><label><input type="radio" name="boost" value="1.45" data-pick="ALDAIR CARDEÑA - 3 GOLES (1.45)">1.45</label></td>
+          </tr>
+
+          <!-- C -->
+          <tr>
+            <td>C</td><td>3</td><td>DICSON INCA MORY</td><td>SANTA ELVIRA FC</td>
+            <td><label><input type="radio" name="boost" value="1.05" data-pick="DICSON INCA MORY - 1 GOL (1.05)">1.05</label></td>
+            <td><label><input type="radio" name="boost" value="1.20" data-pick="DICSON INCA MORY - 2 GOLES (1.20)">1.20</label></td>
+            <td><label><input type="radio" name="boost" value="1.45" data-pick="DICSON INCA MORY - 3 GOLES (1.45)">1.45</label></td>
+          </tr>
+
+          <!-- D -->
+          <tr>
+            <td>D</td><td>4</td><td>RONALDO MACHOA</td><td>LOS INTRATABLES</td>
+            <td><label><input type="radio" name="boost" value="1.05" data-pick="RONALDO MACHOA - 1 GOL (1.05)">1.05</label></td>
+            <td><label><input type="radio" name="boost" value="1.20" data-pick="RONALDO MACHOA - 2 GOLES (1.20)">1.20</label></td>
+            <td><label><input type="radio" name="boost" value="1.45" data-pick="RONALDO MACHOA - 3 GOLES (1.45)">1.45</label></td>
+          </tr>
+
+          <!-- E -->
+          <tr>
+            <td>E</td><td>5</td><td>MATHIAS PÉREZ</td><td>ENGREÍDITOS FC</td>
+            <td><label><input type="radio" name="boost" value="1.05" data-pick="MATHIAS PÉREZ - 1 GOL (1.05)">1.05</label></td>
+            <td><label><input type="radio" name="boost" value="1.20" data-pick="MATHIAS PÉREZ - 2 GOLES (1.20)">1.20</label></td>
+            <td><label><input type="radio" name="boost" value="1.60" data-pick="MATHIAS PÉREZ - 3 GOLES (1.60)">1.60</label></td>
+          </tr>
+
+          <!-- F -->
+          <tr>
+            <td>F</td><td>6</td><td>JHON YUCRA</td><td>LA MÁQUINA DEL MAL</td>
+            <td><label><input type="radio" name="boost" value="1.10" data-pick="JHON YUCRA - 1 GOL (1.10)">1.10</label></td>
+            <td><label><input type="radio" name="boost" value="1.40" data-pick="JHON YUCRA - 2 GOLES (1.40)">1.40</label></td>
+            <td><label><input type="radio" name="boost" value="1.60" data-pick="JHON YUCRA - 3 GOLES (1.60)">1.60</label></td>
+          </tr>
+
+          <!-- G -->
+          <tr>
+            <td>G</td><td>7</td><td>ALEX REYNA</td><td>ENGREÍDITOS FC</td>
+            <td><label><input type="radio" name="boost" value="1.10" data-pick="ALEX REYNA - 1 GOL (1.10)">1.10</label></td>
+            <td><label><input type="radio" name="boost" value="1.40" data-pick="ALEX REYNA - 2 GOLES (1.40)">1.40</label></td>
+            <td><label><input type="radio" name="boost" value="1.60" data-pick="ALEX REYNA - 3 GOLES (1.60)">1.60</label></td>
+          </tr>
+
+          <!-- H -->
+          <tr>
+            <td>H</td><td>8</td><td>ALEX RENTERIA</td><td>LA MÁQUINA DEL MAL</td>
+            <td><label><input type="radio" name="boost" value="1.10" data-pick="ALEX RENTERIA - 1 GOL (1.10)">1.10</label></td>
+            <td><label><input type="radio" name="boost" value="1.40" data-pick="ALEX RENTERIA - 2 GOLES (1.40)">1.40</label></td>
+            <td><label><input type="radio" name="boost" value="1.60" data-pick="ALEX RENTERIA - 3 GOLES (1.60)">1.60</label></td>
+          </tr>
+
+          <!-- I -->
+          <tr>
+            <td>I</td><td>9</td><td>MIGUEL GASPAR</td><td>LOS ENGREÍDOS FC</td>
+            <td><label><input type="radio" name="boost" value="1.10" data-pick="MIGUEL GASPAR - 1 GOL (1.10)">1.10</label></td>
+            <td><label><input type="radio" name="boost" value="1.40" data-pick="MIGUEL GASPAR - 2 GOLES (1.40)">1.40</label></td>
+            <td><label><input type="radio" name="boost" value="1.70" data-pick="MIGUEL GASPAR - 3 GOLES (1.70)">1.70</label></td>
+          </tr>
+
+          <!-- J -->
+          <tr>
+            <td>J</td><td>10</td><td>JONATHAN DIAZ</td><td>JESÚS DE LOS MILAGROS FC</td>
+            <td><label><input type="radio" name="boost" value="1.10" data-pick="JONATHAN DIAZ - 1 GOL (1.10)">1.10</label></td>
+            <td><label><input type="radio" name="boost" value="1.40" data-pick="JONATHAN DIAZ - 2 GOLES (1.40)">1.40</label></td>
+            <td><label><input type="radio" name="boost" value="1.70" data-pick="JONATHAN DIAZ - 3 GOLES (1.70)">1.70</label></td>
+          </tr>
+
+          <!-- K -->
+          <tr>
+            <td>K</td><td>11</td><td>BRAYAN INCA MORY</td><td>SANTA ELVIRA FC</td>
+            <td><label><input type="radio" name="boost" value="1.20" data-pick="BRAYAN INCA MORY - 1 GOL (1.20)">1.20</label></td>
+            <td><label><input type="radio" name="boost" value="1.60" data-pick="BRAYAN INCA MORY - 2 GOLES (1.60)">1.60</label></td>
+            <td><label><input type="radio" name="boost" value="1.70" data-pick="BRAYAN INCA MORY - 3 GOLES (1.70)">1.70</label></td>
+          </tr>
+
+          <!-- L -->
+          <tr>
+            <td>L</td><td>12</td><td>PAOLO ESPINO</td><td>LAS VERBENAS</td>
+            <td><label><input type="radio" name="boost" value="1.20" data-pick="PAOLO ESPINO - 1 GOL (1.20)">1.20</label></td>
+            <td><label><input type="radio" name="boost" value="1.60" data-pick="PAOLO ESPINO - 2 GOLES (1.60)">1.60</label></td>
+            <td><label><input type="radio" name="boost" value="1.80" data-pick="PAOLO ESPINO - 3 GOLES (1.80)">1.80</label></td>
+          </tr>
+
+          <!-- M -->
+          <tr>
+            <td>M</td><td>13</td><td>JOSE LUIS CLAVO</td><td>LOS ENGREÍDOS FC</td>
+            <td><label><input type="radio" name="boost" value="1.20" data-pick="JOSE LUIS CLAVO - 1 GOL (1.20)">1.20</label></td>
+            <td><label><input type="radio" name="boost" value="1.60" data-pick="JOSE LUIS CLAVO - 2 GOLES (1.60)">1.60</label></td>
+            <td><label><input type="radio" name="boost" value="2.00" data-pick="JOSE LUIS CLAVO - 3 GOLES (2.00)">2.00</label></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">Levanta Cuota es opcional: si no eliges nada aquí, no se suma al cálculo.</div>
+    </div>
+
+    <!-- 3) Puntaje final + WhatsApp -->
+    <div class="card">
+      <div class="row">
+        <div>
+          <div class="pill">Puntaje final (producto)</div>
+          <div class="big" id="puntajeFinal">—</div>
+          <div class="note" id="resumen">Elige opciones para ver el cálculo.</div>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" id="btnLimpiar" type="button">Limpiar</button>
+          <a class="btn btnWA" id="btnWhats" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="note">
+        *El botón abre WhatsApp con el mensaje listo. Tú confirmas el envío.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // WhatsApp (Perú): 51 + número
+    const WHATSAPP_NUMBER = "51906962474";
+
+    function round2(n){
+      return (Math.round(n * 100) / 100).toFixed(2);
+    }
+
+    function getSelectedMatches(){
+      const rows = document.querySelectorAll("#tablaPartidos tbody tr");
+      const picks = [];
+
+      rows.forEach((row, idx) => {
+        const matchName = row.getAttribute("data-match") || `PARTIDO ${idx+1}`;
+        const desc = row.getAttribute("data-desc") || "";
+        const checked = row.querySelector('input[type="radio"]:checked');
+
+        if (checked){
+          const labelText = checked.parentElement.textContent.trim().replace(/\s+/g," ");
+          picks.push({
+            name: matchName,
+            desc,
+            pick: labelText,
+            value: parseFloat(checked.value)
+          });
+        }
+      });
+
+      return picks;
+    }
+
+    function getSelectedBoost(){
+      const checked = document.querySelector('input[name="boost"]:checked');
+      if(!checked) return null;
+      return {
+        name: "LEVANTA CUOTA",
+        pick: checked.getAttribute("data-pick") || "Selección",
+        value: parseFloat(checked.value)
+      };
+    }
+
+    function compute(){
+      const matches = getSelectedMatches();
+      const boost = getSelectedBoost();
+
+      const all = [...matches];
+      if (boost) all.push(boost);
+
+      if(all.length === 0){
+        document.getElementById("puntajeFinal").textContent = "—";
+        document.getElementById("resumen").textContent = "Elige opciones para ver el cálculo.";
+        document.getElementById("btnWhats").href = "#";
+        return;
+      }
+
+      const product = all.reduce((acc, s) => acc * s.value, 1);
+      const score = round2(product);
+
+      document.getElementById("puntajeFinal").textContent = score;
+
+      const lines = [];
+      matches.forEach(m => lines.push(`• ${m.name} (${m.desc}): ${m.pick}`));
+      if (boost) lines.push(`• ${boost.name}: ${boost.pick}`);
+      const msg =
+        `ACHUCOBET - Pronóstico (entretenimiento)\n\n` +
+        lines.join("\n") +
+        `\n\nPuntaje final: ${score}`;
+
+      document.getElementById("resumen").textContent =
+        `${matches.length} partido(s) seleccionado(s)` + (boost ? " + 1 levanta" : "");
+
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+      document.getElementById("btnWhats").href = waUrl;
+    }
+
+    // Recalcular en cada cambio
+    document.addEventListener("change", (e) => {
+      if (e.target.matches('input[type="radio"]')) compute();
+    });
+
+    // Limpiar todo
+    document.getElementById("btnLimpiar").addEventListener("click", () => {
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+      compute();
+    });
+
+    compute();
+  </script>
+</body>
+</html>
