@@ -201,30 +201,30 @@
 
     // Pronósticos (FECHA 05)
     const partidos = [
-      { id:"m1", nombre:"PARTIDO 1", desc:"LOS ENGREIDOS vs ENGREIDITOS", opciones:[
-        { key:"L", label:"L", factor:1.55 },
-        { key:"E", label:"E", factor:1.50 },
-        { key:"V", label:"V", factor:1.45 },
-      ]},
-      { id:"m2", nombre:"PARTIDO 2", desc:"LAS VERBENAS vs OLIVAR CITY", opciones:[
-        { key:"L", label:"L", factor:1.25 },
-        { key:"E", label:"E", factor:1.50 },
-        { key:"V", label:"V", factor:2.20 },
-      ]},
-      { id:"m3", nombre:"PARTIDO 3", desc:"JESUS DE LOS MILAGROS vs SPORT ELECTRIC", opciones:[
-        { key:"L", label:"L", factor:1.15 },
+      { id:"m1", nombre:"PARTIDO 1", desc:"LOS POTRILLOS vs SPORT ELECTRIC", opciones:[
+        { key:"L", label:"L", factor:1.10 },
         { key:"E", label:"E", factor:1.60 },
-        { key:"V", label:"V", factor:2.35 },
+        { key:"V", label:"V", factor:2.60 },
       ]},
-      { id:"m4", nombre:"PARTIDO 4", desc:"LOS POTRILLOS vs LOS INTRATABLES", opciones:[
-        { key:"L", label:"L", factor:1.70 },
+      { id:"m2", nombre:"PARTIDO 2", desc:"SANTA ELVIRA vs OLIVAR CITY", opciones:[
+        { key:"L", label:"L", factor:1.05 },
+        { key:"E", label:"E", factor:1.70 },
+        { key:"V", label:"V", factor:3.10 },
+      ]},
+      { id:"m3", nombre:"PARTIDO 3", desc:"ENGREIDITOS vs LA MAQUINA DEL MAL", opciones:[
+        { key:"L", label:"L", factor:1.75 },
         { key:"E", label:"E", factor:1.55 },
-        { key:"V", label:"V", factor:1.45 },
+        { key:"V", label:"V", factor:1.30 },
       ]},
-      { id:"m5", nombre:"PARTIDO 5", desc:"SANTA ELVIRA vs LA MAQUINA DEL MAL", opciones:[
+      { id:"m4", nombre:"PARTIDO 4", desc:"LOS ENGREIDOS vs LOS INTRATABLES", opciones:[
         { key:"L", label:"L", factor:1.70 },
+        { key:"E", label:"E", factor:1.45 },
+        { key:"V", label:"V", factor:1.25 },
+      ]},
+      { id:"m5", nombre:"PARTIDO 5", desc:"JESUS DE LOS MILAGROS vs LAS VERBENAS", opciones:[
+        { key:"L", label:"L", factor:1.40 },
         { key:"E", label:"E", factor:1.50 },
-        { key:"V", label:"V", factor:1.40 },
+        { key:"V", label:"V", factor:1.60 },
       ]},
     ];
 
@@ -258,6 +258,13 @@
       { fecha:"2026-02-08", fechaN:4, local:"LAS VERBENAS", gl:6, gv:1, visita:"SPORT ELECTRIC" },
       { fecha:"2026-02-08", fechaN:4, local:"SANTA ELVIRA", gl:2, gv:2, visita:"LOS INTRATABLES" },
       { fecha:"2026-02-08", fechaN:4, local:"LOS ENGREIDOS", gl:2, gv:3, visita:"LA MAQUINA DEL MAL" },
+
+      // FECHA 05 - 2026-02-15
+      { fecha:"2026-02-15", fechaN:5, local:"LOS ENGREIDOS", gl:7, gv:7, visita:"ENGREIDITOS" },
+      { fecha:"2026-02-15", fechaN:5, local:"LAS VERBENAS", gl:10, gv:0, visita:"OLIVAR CITY" },
+      { fecha:"2026-02-15", fechaN:5, local:"JESUS DE LOS MILAGROS", gl:4, gv:1, visita:"SPORT ELECTRIC" },
+      { fecha:"2026-02-15", fechaN:5, local:"LOS POTRILLOS", gl:4, gv:4, visita:"LOS INTRATABLES" },
+      { fecha:"2026-02-15", fechaN:5, local:"SANTA ELVIRA", gl:3, gv:1, visita:"LA MAQUINA DEL MAL" },
     ];
 
     // Castigos (-2 a ambos)
@@ -267,19 +274,18 @@
     ];
 
     const goleadores = [
-      { jugador:"JHON ARRIETA", equipo:"JESÚS DE LOS MILAGROS", goles:9 },
-      { jugador:"ALDAIR CARDEÑA", equipo:"LOS INTRATABLES", goles:8 },
+      { jugador:"JHON ARRIETA", equipo:"JESÚS DE LOS MILAGROS", goles:12 },
+      { jugador:"ADILSON CARDEÑA", equipo:"LOS INTRATABLES", goles:10 },
+      { jugador:"DIEGO TAPULLIMA", equipo:"LA MÁQUINA DEL MAL", goles:7 },
+      { jugador:"MATHIAS PÉREZ", equipo:"ENGREÍDITOS", goles:7 },
+      { jugador:"DICSON INCA MORY", equipo:"SANTA ELVIRA", goles:7 },
+      { jugador:"CESAR PORTELLA", equipo:"LOS POTRILLOS", goles:6 },
+      { jugador:"PAOLO ESPINO", equipo:"LAS VERBENAS", goles:6 },
+      { jugador:"ANDERSON CORREA", equipo:"LAS VERBENAS", goles:6 },
+      { jugador:"RONALDO MACHOA", equipo:"LOS INTRATABLES", goles:5 },
+      { jugador:"ALEX RENTERIA", equipo:"LA MÁQUINA DEL MAL", goles:5 },
       { jugador:"JHON YUCRA", equipo:"LA MÁQUINA DEL MAL", goles:5 },
-      { jugador:"DICSON INCA MORY", equipo:"SANTA ELVIRA", goles:5 },
-      { jugador:"RONALDO MACHOA", equipo:"LOS INTRATABLES", goles:4 },
-      { jugador:"ALEX REYNA", equipo:"ENGREÍDITOS", goles:4 },
-      { jugador:"MATHIAS PÉREZ", equipo:"ENGREÍDITOS", goles:4 },
-      { jugador:"ALEX RENTERIA", equipo:"LA MÁQUINA DEL MAL", goles:4 },
       { jugador:"MIGUEL GASPAR", equipo:"LOS ENGREÍDOS", goles:4 },
-      { jugador:"JONATHAN DIAZ", equipo:"JESÚS DE LOS MILAGROS", goles:3 },
-      { jugador:"PAOLO ESPINO", equipo:"LAS VERBENAS", goles:3 },
-      { jugador:"CESAR PORTELLA", equipo:"LOS POTRILLOS", goles:3 },
-      { jugador:"JEAN PIERRE ARMIJO", equipo:"LAS VERBENAS", goles:3 },
     ];
 
     // =========================
