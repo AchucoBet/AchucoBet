@@ -1,539 +1,138 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ACHUCOBET | Torneo & Pronósticos</title>
-  <style>
-    :root{
-      --bg:#0b1220;
-      --card:#101a33;
-      --muted:#9fb0d0;
-      --text:#eef3ff;
-      --line:rgba(255,255,255,.12);
-      --accent:#f5c400;
-      --wa:#25D366;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text)}
-    .wrap{max-width:1100px;margin:0 auto;padding:18px}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:56px;width:auto;filter: drop-shadow(0 10px 22px rgba(0,0,0,.45))}
-    .brandTitle{display:flex;flex-direction:column}
-    .brandTitle b{font-size:18px;letter-spacing:.5px}
-    .brandTitle span{color:var(--muted);font-size:13px;margin-top:-2px}
-    .pill{padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:var(--muted);font-weight:700;font-size:12px}
-    .card{background:rgba(16,26,51,.82);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px;margin:14px 0;box-shadow:0 18px 55px rgba(0,0,0,.35);backdrop-filter: blur(8px)}
-    h2{margin:0 0 10px;font-size:18px}
-    .note{color:var(--muted);font-size:13px;margin:8px 0 0}
-    .nav{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.08);color:var(--text);text-decoration:none;font-weight:800;cursor:pointer
-    }
-    .btn:hover{background:rgba(255,255,255,.12)}
-    .btn-wa{
-      border:1px solid rgba(37,211,102,.45);
-      background:rgba(37,211,102,.18);
-    }
-    .btn-wa:hover{background:rgba(37,211,102,.26)}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-    th{color:var(--muted);font-size:12px}
-    .opts{display:flex;gap:10px;flex-wrap:wrap}
-    label{
-      display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);padding:8px 10px;border-radius:999px;cursor:pointer;user-select:none
-    }
-    input[type="radio"]{transform:scale(1.05)}
-    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-    .big{font-size:34px;font-weight:900;letter-spacing:.4px}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .resultItem{
-      display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px;
-      border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:12px;margin-top:10px
-    }
-    .tag{
-      display:inline-block;margin-left:8px;padding:4px 8px;border-radius:999px;
-      border:1px solid rgba(245,196,0,.35);background:rgba(245,196,0,.12);color:var(--accent);
-      font-weight:900;font-size:11px
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ACHUCOBET | Semifinal</title>
 
-    /* Colores por posición */
-    .rank-top { background: rgba(40, 167, 69, .18); }   /* 1-2 verde claro */
-    .rank-mid { background: rgba(255, 159, 67, .18); }  /* 3-6 naranja claro */
-    .rank-low { background: rgba(220, 53, 69, .18); }   /* 7-10 rojo claro */
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b1220;
+  color:white;
+}
+.wrap{max-width:900px;margin:auto;padding:20px}
 
-    @media (max-width:900px){
-      .brand img{height:48px}
-      .two{grid-template-columns:1fr}
-    }
-  </style>
+h1{text-align:center}
+
+.card{
+  background:#101a33;
+  border-radius:15px;
+  padding:15px;
+  margin:15px 0;
+}
+
+.opcion{
+  display:block;
+  margin:6px 0;
+  padding:8px;
+  border-radius:10px;
+  border:1px solid #ffffff20;
+  cursor:pointer;
+}
+
+.opcion:hover{background:#ffffff10}
+
+.btn{
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn-wa{
+  background:#25D366;
+  color:#003300;
+  width:100%;
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        <img src="logo.png" alt="ACHUCOBET logo">
-        <div class="brandTitle">
-          <b>ACHUCOBET</b>
-          <span>Torneo del barrio • Resultados • Tabla • Goleadores</span>
-        </div>
-      </div>
-      <div class="pill">Entretenimiento • Juego responsable</div>
-    </div>
 
-    <div class="card">
-      <div class="nav">
-        <a class="btn" href="#pronosticos">Pronósticos</a>
-        <a class="btn" href="#resultados">Resultados</a>
-        <a class="btn" href="#posiciones">Posiciones</a>
-        <a class="btn" href="#goleadores">Goleadores</a>
-      </div>
-      <div class="note">Navega Aquí	.</div>
-    </div>
+<div class="wrap">
 
-    <!-- PRONÓSTICOS -->
-    <div class="card" id="pronosticos">
-      <h2>Pronósticos (FECHA 05)</h2>
-      <div class="note">En cada partido solo puedes elegir 1 opción (L / E / V). Esto es solo entretenimiento.</div>
+<h1>🏆 1ra Semifinal Copa Olivar 2026</h1>
 
-      <table id="tablaPartidos">
-        <thead>
-          <tr>
-            <th>Partido</th>
-            <th>Elige 1 opción</th>
-          </tr>
-        </thead>
-        <tbody id="tbodyPartidos"></tbody>
-      </table>
+<!-- PARTIDO 1 -->
+<div class="card">
+<h2>MILAGROS vs VERBENAS</h2>
 
-      <div class="card" style="margin-top:12px">
-        <div class="row">
-          <div>
-            <div class="pill">Cuota total (producto)</div>
-            <div class="big" id="puntajeFinal">—</div>
-            <div class="note" id="resumenPron">Selecciona opciones para ver el cálculo.</div>
-          </div>
+<label class="opcion"><input type="radio" name="p1" value="LOCAL 1.50"> LOCAL 1.50</label>
+<label class="opcion"><input type="radio" name="p1" value="EMPATE 1.60"> EMPATE 1.60</label>
+<label class="opcion"><input type="radio" name="p1" value="VISITA 1.65"> VISITA 1.65</label>
 
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn" id="btnLimpiar" type="button">Limpiar</button>
-            <button class="btn btn-wa" id="btnWhatsApp" type="button">Enviar a WhatsApp</button>
-          </div>
-        </div>
+<label class="opcion"><input type="radio" name="p1" value="LOCAL/EMPATE 1.35"> LOCAL/EMPATE 1.35</label>
+<label class="opcion"><input type="radio" name="p1" value="VISITA/EMPATE 1.50"> VISITA/EMPATE 1.50</label>
 
-        <div class="note" id="detallePron" style="margin-top:8px"></div>
-      </div>
-    </div>
+<label class="opcion"><input type="radio" name="p1" value="GOLES >3.5 1.65"> GOLES > 3.5 (1.65)</label>
+<label class="opcion"><input type="radio" name="p1" value="GOLES <3.5 1.65"> GOLES < 3.5 (1.65)</label>
 
-    <!-- RESULTADOS + POSICIONES -->
-    <div class="two">
-      <div class="card" id="resultados">
-        <h2>Resultados anteriores</h2>
-        <div class="note">Historial de partidos (FECHA 01 a FECHA 04).</div>
-        <div id="listaResultados"></div>
-      </div>
+<label class="opcion"><input type="radio" name="p1" value="TARJETAS >1.5 1.40"> TARJETAS > 1.5 (1.40)</label>
+<label class="opcion"><input type="radio" name="p1" value="TARJETAS <1.5 1.65"> TARJETAS < 1.5 (1.65)</label>
 
-      <div class="card" id="posiciones">
-        <h2>Tabla de posiciones</h2>
-        <div class="note">Orden: Pts, DG, GF.</div>
-        <div style="overflow:auto">
-          <table id="tablaPosiciones">
-            <thead>
-              <tr>
-                <th>#</th><th>Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
+<label class="opcion"><input type="radio" name="p1" value="LOCAL Y +3.5 GOLES 2.30"> LOCAL Y +3.5 GOLES (2.30)</label>
+<label class="opcion"><input type="radio" name="p1" value="VISITA Y +3.5 GOLES 2.60"> VISITA Y +3.5 GOLES (2.60)</label>
 
-        <pre id="notasCastigos" class="note" style="white-space:pre-wrap;margin-top:10px"></pre>
-      </div>
-    </div>
+<button class="btn btn-wa" onclick="enviar('p1','MILAGROS vs VERBENAS')">
+Enviar a WhatsApp
+</button>
+</div>
 
-    <!-- GOLEADORES -->
-    <div class="card" id="goleadores">
-      <h2>Goleadores</h2>
-      <div class="note">Ordenado por goles.</div>
-      <div style="overflow:auto">
-        <table id="tablaGoleadores">
-          <thead>
-            <tr>
-              <th>#</th><th>Jugador</th><th>Equipo</th><th>Goles</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
+<!-- PARTIDO 2 -->
+<div class="card">
+<h2>ENGREIDITOS vs POTRILLOS</h2>
 
-    <div class="card">
-      <div class="note">
-        Tip: SIGUEME EN LAS ACHUCOJIJAS - 2demayoVScristal (doble E/V), AlianzaVSboys (L), CristalVSUniv (doble E/V), CiencianoVSA.Atletico (L), CuscoVSc.unidos (L), MoqueguaVSGrau (doble E/V)... Cuota 5.58 aprox
-      </div>
-    </div>
-  </div>
+<label class="opcion"><input type="radio" name="p2" value="LOCAL 1.60"> LOCAL 1.60</label>
+<label class="opcion"><input type="radio" name="p2" value="EMPATE 1.55"> EMPATE 1.55</label>
+<label class="opcion"><input type="radio" name="p2" value="VISITA 1.50"> VISITA 1.50</label>
 
-  <script>
-    // =========================
-    // DATA (EDITABLE)
-    // =========================
+<label class="opcion"><input type="radio" name="p2" value="LOCAL/EMPATE 1.50"> LOCAL/EMPATE 1.50</label>
+<label class="opcion"><input type="radio" name="p2" value="VISITA/EMPATE 1.35"> VISITA/EMPATE 1.35</label>
 
-    // WhatsApp destino (Perú +51)
-    const WHATSAPP_NUMBER = "51906962474"; // 906962474
+<label class="opcion"><input type="radio" name="p2" value="GOLES >3.5 1.65"> GOLES > 3.5 (1.65)</label>
+<label class="opcion"><input type="radio" name="p2" value="GOLES <3.5 1.65"> GOLES < 3.5 (1.65)</label>
 
-    const equipos = [
-      "SPORT ELECTRIC",
-      "SANTA ELVIRA",
-      "LOS INTRATABLES",
-      "ENGREIDITOS",
-      "OLIVAR CITY",
-      "LOS ENGREIDOS",
-      "JESUS DE LOS MILAGROS",
-      "LA MAQUINA DEL MAL",
-      "LOS POTRILLOS",
-      "LAS VERBENAS"
-    ];
+<label class="opcion"><input type="radio" name="p2" value="TARJETAS >1.5 1.40"> TARJETAS > 1.5 (1.40)</label>
+<label class="opcion"><input type="radio" name="p2" value="TARJETAS <1.5 1.65"> TARJETAS < 1.5 (1.65)</label>
 
-    // Pronósticos (FECHA 06)
-    const partidos = [
-      { id:"m1", nombre:"PARTIDO 1", desc:"LOS POTRILLOS vs SPORT ELECTRIC", opciones:[
-        { key:"L", label:"L", factor:1.10 },
-        { key:"E", label:"E", factor:1.60 },
-        { key:"V", label:"V", factor:2.60 },
-      ]},
-      { id:"m2", nombre:"PARTIDO 2", desc:"SANTA ELVIRA vs OLIVAR CITY", opciones:[
-        { key:"L", label:"L", factor:1.05 },
-        { key:"E", label:"E", factor:1.70 },
-        { key:"V", label:"V", factor:3.10 },
-      ]},
-      { id:"m3", nombre:"PARTIDO 3", desc:"ENGREIDITOS vs LA MAQUINA DEL MAL", opciones:[
-        { key:"L", label:"L", factor:1.75 },
-        { key:"E", label:"E", factor:1.55 },
-        { key:"V", label:"V", factor:1.30 },
-      ]},
-      { id:"m4", nombre:"PARTIDO 4", desc:"LOS ENGREIDOS vs LOS INTRATABLES", opciones:[
-        { key:"L", label:"L", factor:1.70 },
-        { key:"E", label:"E", factor:1.45 },
-        { key:"V", label:"V", factor:1.25 },
-      ]},
-      { id:"m5", nombre:"PARTIDO 5", desc:"JESUS DE LOS MILAGROS vs LAS VERBENAS", opciones:[
-        { key:"L", label:"L", factor:1.40 },
-        { key:"E", label:"E", factor:1.50 },
-        { key:"V", label:"V", factor:1.60 },
-      ]},
-    ];
+<label class="opcion"><input type="radio" name="p2" value="LOCAL Y +3.5 GOLES 2.70"> LOCAL Y +3.5 GOLES (2.70)</label>
+<label class="opcion"><input type="radio" name="p2" value="VISITA Y +3.5 GOLES 2.25"> VISITA Y +3.5 GOLES (2.25)</label>
 
-    // Resultados (FECHA 01 a FECHA 05)
-    // ✅ SPORT ELECTRIC 0-6 SANTA ELVIRA, pero ELECTRIC gana por mesa (solo puntos)
-    const resultadosAnteriores = [
-      // FECHA 01 - 2026-01-18
-      { fecha:"2026-01-18", fechaN:1, local:"SPORT ELECTRIC", gl:0, gv:6, visita:"SANTA ELVIRA", nota:"Gana por mesa", mesaGanador:"LOCAL" },
-      { fecha:"2026-01-18", fechaN:1, local:"LOS INTRATABLES", gl:3, gv:4, visita:"ENGREIDITOS" },
-      { fecha:"2026-01-18", fechaN:1, local:"OLIVAR CITY", gl:0, gv:4, visita:"LOS ENGREIDOS" },
-      { fecha:"2026-01-18", fechaN:1, local:"JESUS DE LOS MILAGROS", gl:4, gv:4, visita:"LA MAQUINA DEL MAL" },
-      { fecha:"2026-01-18", fechaN:1, local:"LOS POTRILLOS", gl:1, gv:3, visita:"LAS VERBENAS" },
+<button class="btn btn-wa" onclick="enviar('p2','ENGREIDITOS vs POTRILLOS')">
+Enviar a WhatsApp
+</button>
+</div>
 
-      // FECHA 02 - 2026-01-25
-      { fecha:"2026-01-25", fechaN:2, local:"LOS INTRATABLES", gl:4, gv:2, visita:"OLIVAR CITY" },
-      { fecha:"2026-01-25", fechaN:2, local:"SANTA ELVIRA", gl:2, gv:2, visita:"JESUS DE LOS MILAGROS" },
-      { fecha:"2026-01-25", fechaN:2, local:"LA MAQUINA DEL MAL", gl:2, gv:0, visita:"SPORT ELECTRIC" },
-      { fecha:"2026-01-25", fechaN:2, local:"LOS ENGREIDOS", gl:4, gv:1, visita:"LOS POTRILLOS" },
-      { fecha:"2026-01-25", fechaN:2, local:"ENGREIDITOS", gl:4, gv:0, visita:"LAS VERBENAS" },
+</div>
 
-      // FECHA 03 - 2026-02-01
-      { fecha:"2026-02-01", fechaN:3, local:"LA MAQUINA DEL MAL", gl:3, gv:0, visita:"LAS VERBENAS" },
-      { fecha:"2026-02-01", fechaN:3, local:"OLIVAR CITY", gl:2, gv:6, visita:"JESUS DE LOS MILAGROS" },
-      { fecha:"2026-02-01", fechaN:3, local:"LOS INTRATABLES", gl:5, gv:0, visita:"SPORT ELECTRIC" },
-      { fecha:"2026-02-01", fechaN:3, local:"ENGREIDITOS", gl:1, gv:1, visita:"LOS POTRILLOS" },
-      { fecha:"2026-02-01", fechaN:3, local:"LOS ENGREIDOS", gl:0, gv:2, visita:"SANTA ELVIRA" },
+<script>
+const numero="51906962474";
 
-      // FECHA 04 - 2026-02-08
-      { fecha:"2026-02-08", fechaN:4, local:"ENGREIDITOS", gl:0, gv:2, visita:"JESUS DE LOS MILAGROS" },
-      { fecha:"2026-02-08", fechaN:4, local:"LOS POTRILLOS", gl:2, gv:0, visita:"OLIVAR CITY" },
-      { fecha:"2026-02-08", fechaN:4, local:"LAS VERBENAS", gl:6, gv:1, visita:"SPORT ELECTRIC" },
-      { fecha:"2026-02-08", fechaN:4, local:"SANTA ELVIRA", gl:2, gv:2, visita:"LOS INTRATABLES" },
-      { fecha:"2026-02-08", fechaN:4, local:"LOS ENGREIDOS", gl:2, gv:3, visita:"LA MAQUINA DEL MAL" },
+function enviar(name, partido){
+  const seleccion=document.querySelector(`input[name="${name}"]:checked`);
+  if(!seleccion){
+    alert("Selecciona una opción");
+    return;
+  }
 
-      // FECHA 05 - 2026-02-15
-      { fecha:"2026-02-15", fechaN:5, local:"LOS ENGREIDOS", gl:7, gv:7, visita:"ENGREIDITOS" },
-      { fecha:"2026-02-15", fechaN:5, local:"LAS VERBENAS", gl:10, gv:0, visita:"OLIVAR CITY" },
-      { fecha:"2026-02-15", fechaN:5, local:"JESUS DE LOS MILAGROS", gl:4, gv:1, visita:"SPORT ELECTRIC" },
-      { fecha:"2026-02-15", fechaN:5, local:"LOS POTRILLOS", gl:4, gv:4, visita:"LOS INTRATABLES" },
-      { fecha:"2026-02-15", fechaN:5, local:"SANTA ELVIRA", gl:3, gv:1, visita:"LA MAQUINA DEL MAL" },
-    ];
+  const mensaje=
+`ACHUCOBET
+1ra Semifinal Copa Olivar 2026
 
-    // Castigos (-2 a ambos)
-    const castigos = [
-      { equipo: "JESUS DE LOS MILAGROS", puntos: -2, motivo: "llegar fuera de la hora de presentación" },
-      { equipo: "LA MAQUINA DEL MAL", puntos: -2, motivo: "llegar fuera de la hora de presentación" },
-    ];
+Partido:
+${partido}
 
-    const goleadores = [
-      { jugador:"JHON ARRIETA", equipo:"JESÚS DE LOS MILAGROS", goles:12 },
-      { jugador:"ADILSON CARDEÑA", equipo:"LOS INTRATABLES", goles:10 },
-      { jugador:"DIEGO TAPULLIMA", equipo:"LA MÁQUINA DEL MAL", goles:7 },
-      { jugador:"MATHIAS PÉREZ", equipo:"ENGREÍDITOS", goles:7 },
-      { jugador:"DICSON INCA MORY", equipo:"SANTA ELVIRA", goles:7 },
-      { jugador:"CESAR PORTELLA", equipo:"LOS POTRILLOS", goles:6 },
-      { jugador:"PAOLO ESPINO", equipo:"LAS VERBENAS", goles:6 },
-      { jugador:"ANDERSON CORREA", equipo:"LAS VERBENAS", goles:6 },
-      { jugador:"RONALDO MACHOA", equipo:"LOS INTRATABLES", goles:5 },
-      { jugador:"ALEX RENTERIA", equipo:"LA MÁQUINA DEL MAL", goles:5 },
-      { jugador:"JHON YUCRA", equipo:"LA MÁQUINA DEL MAL", goles:5 },
-      { jugador:"MIGUEL GASPAR", equipo:"LOS ENGREÍDOS", goles:4 },
-    ];
+Apuesta:
+${seleccion.value}`;
 
-    // =========================
-    // UTILIDADES
-    // =========================
-    function round2(n){ return (Math.round(n * 100) / 100).toFixed(2); }
-    function fmtFecha(iso){ const [y,m,d] = iso.split("-"); return `${d}/${m}`; }
+  const url=`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url);
+}
+</script>
 
-    // =========================
-    // PRONÓSTICOS (render + cálculo + WhatsApp)
-    // =========================
-    function renderPronosticos(){
-      const tb = document.getElementById("tbodyPartidos");
-      tb.innerHTML = partidos.map(p => `
-        <tr data-id="${p.id}">
-          <td><b>${p.nombre}</b><div class="note">${p.desc}</div></td>
-          <td>
-            <div class="opts">
-              ${p.opciones.map(o => `
-                <label>
-                  <input type="radio" name="${p.id}" value="${o.factor}" data-partido="${p.desc}" data-pick="${o.label}">
-                  ${o.label} ${o.factor}
-                </label>
-              `).join("")}
-            </div>
-          </td>
-        </tr>
-      `).join("");
-    }
-
-    function getSeleccionesPronostico(){
-      const selected = [];
-      partidos.forEach(p => {
-        const checked = document.querySelector(`input[name="${p.id}"]:checked`);
-        if(checked){
-          selected.push({
-            partido: checked.dataset.partido,
-            pick: checked.dataset.pick,
-            factor: parseFloat(checked.value)
-          });
-        }
-      });
-      return selected;
-    }
-
-    function computePronosticos(){
-      const selected = getSeleccionesPronostico();
-
-      if(selected.length === 0){
-        document.getElementById("puntajeFinal").textContent = "—";
-        document.getElementById("resumenPron").textContent = "Selecciona opciones para ver el cálculo.";
-        document.getElementById("detallePron").textContent = "";
-        return;
-      }
-
-      const product = selected.reduce((acc, s) => acc * s.factor, 1);
-      document.getElementById("puntajeFinal").textContent = round2(product);
-      document.getElementById("resumenPron").textContent = `${selected.length} partido(s) seleccionado(s).`;
-
-      const detalle = selected.map(s => `• ${s.partido} → ${s.pick} (${s.factor})`).join("  |  ");
-      document.getElementById("detallePron").textContent = detalle;
-    }
-
-    function enviarWhatsApp(){
-      const selected = getSeleccionesPronostico();
-      if(selected.length === 0){
-        alert("Selecciona al menos un pronóstico.");
-        return;
-      }
-
-      const cuota = document.getElementById("puntajeFinal").textContent;
-      let msg = "ACHUCOBET - Pronóstico\n\n";
-      selected.forEach(s => {
-        msg += `• ${s.partido} → ${s.pick} (${s.factor})\n`;
-      });
-      msg += `\nCuota total: ${cuota}`;
-
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-
-    // =========================
-    // RESULTADOS (render)
-    // =========================
-    function renderResultados(){
-      const el = document.getElementById("listaResultados");
-
-      const groups = {};
-      resultadosAnteriores.forEach(r => {
-        const k = `FECHA ${String(r.fechaN).padStart(2,"0")}`;
-        if(!groups[k]) groups[k] = [];
-        groups[k].push(r);
-      });
-
-      const keys = Object.keys(groups).sort((a,b)=> a.localeCompare(b));
-
-      el.innerHTML = keys.map(k => {
-        const rows = groups[k].map(r => `
-          <div class="resultItem">
-            <div style="color:var(--muted);font-weight:900">${fmtFecha(r.fecha)}</div>
-            <div style="flex:1;text-align:center">
-              <b>${r.local}</b> ${r.gl} - ${r.gv} <b>${r.visita}</b>
-              ${r.nota ? `<span class="tag">${r.nota}</span>` : ""}
-            </div>
-          </div>
-        `).join("");
-
-        return `
-          <div style="margin-top:14px">
-            <div class="pill" style="display:inline-block">${k}</div>
-            ${rows}
-          </div>
-        `;
-      }).join("");
-    }
-
-    // =========================
-    // POSICIONES
-    // =========================
-    function initStats(){
-      const stats = {};
-      equipos.forEach(e => {
-        stats[e] = {equipo:e,PJ:0,PG:0,PE:0,PP:0,GF:0,GC:0,DG:0,Pts:0};
-      });
-      return stats;
-    }
-
-    // Goles SIEMPRE cuentan.
-    // Si "Gana por mesa", SOLO se fuerza el ganador para los puntos (3) y W/L.
-    function aplicarResultado(stats, r){
-      const L = stats[r.local];
-      const V = stats[r.visita];
-
-      L.PJ++; V.PJ++;
-
-      // goles SIEMPRE
-      L.GF += r.gl; L.GC += r.gv;
-      V.GF += r.gv; V.GC += r.gl;
-
-      // por mesa: solo puntos
-      if (r.nota === "Gana por mesa" && (r.mesaGanador === "LOCAL" || r.mesaGanador === "VISITA")) {
-        if (r.mesaGanador === "LOCAL") {
-          L.PG++; V.PP++; L.Pts += 3;
-        } else {
-          V.PG++; L.PP++; V.Pts += 3;
-        }
-        L.DG = L.GF - L.GC;
-        V.DG = V.GF - V.GC;
-        return;
-      }
-
-      // normal: puntos según marcador
-      if (r.gl > r.gv){ L.PG++; V.PP++; L.Pts += 3; }
-      else if (r.gl < r.gv){ V.PG++; L.PP++; V.Pts += 3; }
-      else { L.PE++; V.PE++; L.Pts += 1; V.Pts += 1; }
-
-      L.DG = L.GF - L.GC;
-      V.DG = V.GF - V.GC;
-    }
-
-    function applyCastigos(stats){
-      castigos.forEach(c => {
-        if(stats[c.equipo]){
-          stats[c.equipo].Pts += c.puntos;
-        }
-      });
-    }
-
-    function renderPosiciones(){
-      const tbody = document.querySelector("#tablaPosiciones tbody");
-
-      const stats = initStats();
-      resultadosAnteriores.forEach(r => aplicarResultado(stats, r));
-      applyCastigos(stats);
-
-      const tabla = Object.values(stats).sort((a,b) =>
-        b.Pts - a.Pts || b.DG - a.DG || b.GF - a.GF || a.equipo.localeCompare(b.equipo)
-      );
-
-      // Colores por ranking
-      tbody.innerHTML = tabla.map((t,i) => {
-        const pos = i + 1;
-        const cls = pos <= 2 ? "rank-top" : (pos <= 6 ? "rank-mid" : "rank-low");
-
-        return `
-          <tr class="${cls}">
-            <td>${pos}</td>
-            <td><b>${t.equipo}</b></td>
-            <td>${t.PJ}</td><td>${t.PG}</td><td>${t.PE}</td><td>${t.PP}</td>
-            <td>${t.GF}</td><td>${t.GC}</td><td>${t.DG}</td><td><b>${t.Pts}</b></td>
-          </tr>
-        `;
-      }).join("");
-
-      renderNotasCastigos();
-    }
-
-    function renderNotasCastigos(){
-      const el = document.getElementById("notasCastigos");
-      const lines = [];
-
-      castigos.forEach(c => {
-        lines.push(`• RESTA ${Math.abs(c.puntos)} PUNTOS A "${c.equipo}", POR ${c.motivo}.`);
-      });
-
-      lines.push(`• EN LA FECHA 01, "SPORT ELECTRIC" GANA EL PARTIDO POR MESA (SOLO AFECTA LOS 3 PUNTOS).`);
-
-      el.textContent = lines.join("\n");
-    }
-
-    // =========================
-    // GOLEADORES
-    // =========================
-    function renderGoleadores(){
-      const tbody = document.querySelector("#tablaGoleadores tbody");
-      const lista = goleadores.slice().sort((a,b)=> b.goles - a.goles || a.jugador.localeCompare(b.jugador));
-      tbody.innerHTML = lista.map((g,i) => `
-        <tr>
-          <td>${i+1}</td>
-          <td><b>${g.jugador}</b></td>
-          <td>${g.equipo}</td>
-          <td><b>${g.goles}</b></td>
-        </tr>
-      `).join("");
-    }
-
-    // =========================
-    // INIT
-    // =========================
-    renderPronosticos();
-    computePronosticos();
-    renderResultados();
-    renderPosiciones();
-    renderGoleadores();
-
-    document.addEventListener("change", (e) => {
-      if(e.target.matches('input[type="radio"]')) computePronosticos();
-    });
-
-    document.getElementById("btnLimpiar").addEventListener("click", () => {
-      document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-      computePronosticos();
-    });
-
-    document.getElementById("btnWhatsApp").addEventListener("click", () => {
-      enviarWhatsApp();
-    });
-  </script>
 </body>
 </html>
-
